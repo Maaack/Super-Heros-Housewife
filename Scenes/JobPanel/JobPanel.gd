@@ -9,12 +9,13 @@ signal milestone_completed
 
 export(String) var job_name : String = "Name of the Chore" setget set_job_name
 export(int, 1, 100) var task_count : int = 10
-export(float, 0.0, 60.0) var task_time : float = 1.0
+export(float, 0.0, 60.0) var task_time : float = 0.5
 export(StyleBox) var panel_normal : StyleBox
 export(StyleBox) var panel_hover : StyleBox
 export(StyleBox) var panel_active : StyleBox
 
 var active : bool = false
+var job_completed : bool = false
 var tasks_completed : int = 0
 
 func set_job_name(value : String) :
@@ -24,6 +25,9 @@ func set_job_name(value : String) :
 
 func is_active():
 	return active
+
+func is_job_completed():
+	return job_completed
 
 func set_panel_normal():
 	if panel_normal:
@@ -54,7 +58,11 @@ func stop_job():
 	set_panel_normal()
 
 func complete_job():
+	if is_job_completed():
+		return
 	emit_signal("job_completed")
+	job_completed = true
+	$Panel/MarginContainer/HBoxContainer/Center/TaskClock.stop()
 	$AnimationPlayer.play("JobComplete")
 	yield($AnimationPlayer, "animation_finished")
 	queue_free()

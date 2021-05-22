@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Main/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/JobPanel/JobPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameUI/GameUI.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Clock/Clock.tscn" type="PackedScene" id=4]
 
 [node name="GameUI" type="Control"]
 margin_left = 32.0
@@ -18,26 +19,109 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_right = 960.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="CleanProgressBar" type="ProgressBar" parent="VBoxContainer/Control"]
+margin_left = 245.0
+margin_top = 19.0
+margin_right = 619.0
+margin_bottom = 39.0
+max_value = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DayClock" parent="VBoxContainer/Control" instance=ExtResource( 4 )]
+margin_left = 865.0
+margin_top = 5.0
+margin_right = 931.0
+margin_bottom = 71.0
+wait_time = 30.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 108.0
+margin_right = 960.0
+margin_bottom = 536.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JobsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 800.0
+margin_bottom = 576.0
 custom_constants/separation = 32
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="JobPanel" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_right = 960.0
+[node name="JobPanel" parent="VBoxContainer/ScrollContainer/JobsContainer" instance=ExtResource( 2 )]
+margin_right = 800.0
 margin_bottom = 120.0
 
-[node name="JobPanel2" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="JobPanel2" parent="VBoxContainer/ScrollContainer/JobsContainer" instance=ExtResource( 2 )]
 margin_top = 152.0
-margin_right = 960.0
+margin_right = 800.0
 margin_bottom = 272.0
 
-[node name="JobPanel3" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="JobPanel3" parent="VBoxContainer/ScrollContainer/JobsContainer" instance=ExtResource( 2 )]
 margin_top = 304.0
-margin_right = 960.0
+margin_right = 800.0
 margin_bottom = 424.0
 
-[node name="JobPanel4" parent="VBoxContainer" instance=ExtResource( 2 )]
+[node name="JobPanel4" parent="VBoxContainer/ScrollContainer/JobsContainer" instance=ExtResource( 2 )]
 margin_top = 456.0
-margin_right = 960.0
+margin_right = 800.0
 margin_bottom = 576.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HusbandHomePanel" type="Panel" parent="CenterContainer"]
+visible = false
+margin_left = 280.0
+margin_top = 168.0
+margin_right = 680.0
+margin_bottom = 368.0
+rect_min_size = Vector2( 400, 200 )
+
+[node name="Button" type="Button" parent="CenterContainer/HusbandHomePanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -28.5
+margin_top = -26.0
+margin_right = 28.5
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer/HusbandHomePanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -134.5
+margin_top = -10.0
+margin_right = 134.5
+margin_bottom = 10.0
+text = "Your husband has returned home!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="VBoxContainer/Control/DayClock" to="." method="_on_DayClock_timeout"]
+[connection signal="pressed" from="CenterContainer/HusbandHomePanel/Button" to="." method="_on_Button_pressed"]
