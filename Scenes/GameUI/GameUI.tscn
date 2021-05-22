@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Main/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/JobPanel/JobPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/GameUI/GameUI.gd" type="Script" id=3]
 
 [node name="GameUI" type="Control"]
 margin_left = 32.0
@@ -9,6 +10,7 @@ margin_top = 32.0
 margin_right = 992.0
 margin_bottom = 568.0
 theme = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,15 +24,20 @@ __meta__ = {
 }
 
 [node name="JobPanel" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 960.0
+margin_bottom = 120.0
 
 [node name="JobPanel2" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 152.0
+margin_right = 960.0
 margin_bottom = 272.0
 
 [node name="JobPanel3" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 304.0
+margin_right = 960.0
 margin_bottom = 424.0
 
 [node name="JobPanel4" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 456.0
+margin_right = 960.0
 margin_bottom = 576.0
