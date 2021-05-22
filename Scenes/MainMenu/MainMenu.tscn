@@ -1,0 +1,192 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Main/DescriptionFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Main/LargeTitleFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/Main/SmallTitleFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Main/ThickDescriptionFont.tres" type="DynamicFont" id=4]
+
+[node name="MainMenu" type="Control"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 992.0
+margin_bottom = 568.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 960.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 464.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+custom_constants/separation = 32
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_right = 464.0
+margin_bottom = 252.0
+size_flags_vertical = 3
+
+[node name="OptionsPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
+margin_top = 284.0
+margin_right = 464.0
+margin_bottom = 536.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/OptionsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsVBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/OptionsPanel/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 432.0
+margin_bottom = 220.0
+custom_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="HBoxContainer/VBoxContainer/OptionsPanel/MarginContainer/OptionsVBox"]
+margin_right = 400.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Start"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 496.0
+margin_right = 960.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+custom_constants/separation = 32
+
+[node name="TitlePanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+margin_right = 464.0
+margin_bottom = 252.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/TitlePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer2/TitlePanel/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 432.0
+margin_bottom = 220.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/TitlePanel/MarginContainer/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_right = 113.0
+margin_bottom = 83.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.513726 )
+custom_constants/shadow_offset_x = -4
+custom_constants/shadow_offset_y = 2
+text = "Super Hero's"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/TitlePanel/MarginContainer/Control"]
+margin_left = 188.552
+margin_top = 90.4696
+margin_right = 372.552
+margin_bottom = 152.47
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.513726 )
+custom_constants/shadow_offset_x = -4
+custom_constants/shadow_offset_y = 2
+text = "Housewife"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 284.0
+margin_right = 464.0
+margin_bottom = 536.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/DescriptionPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 432.0
+margin_bottom = 220.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer/Control"]
+anchor_right = 1.0
+margin_bottom = 109.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "A short game submission for 
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer/Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -42.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Godot Wild Jam #33"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer/Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -53.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "The theme was \"You Aren't the Hero\".
+The jam was 9-ish days long."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
