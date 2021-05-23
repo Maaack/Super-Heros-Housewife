@@ -1,33 +1,52 @@
 extends Control
 
 
-onready var jobs_container = $VBoxContainer/ScrollContainer/JobsContainer
-onready var clean_progress = $VBoxContainer/Control/CleanProgressBar
-onready var day_clock = $VBoxContainer/Control/DayClock
+onready var level_container = $LevelsContainer
+onready var shadow_panel = $ShadowPanel
+onready var modal_panel = $CenterContainer/ModalPanel
 
-var jobs_list : Array = []
+var current_level : int = 0
+var love : float = 100.0
+var happiness : float = 100.0
+var appearance : float = 100.0
 
-func _ready():
-	for child in jobs_container.get_children():
-		if child.has_signal("job_started"):
-			child.connect("job_started", self, "_on_JobPanel_job_started", [child])
-		if child.has_signal("job_completed"):
-			child.connect("job_completed", self, "_on_JobPanel_job_completed", [child])
-		jobs_list.append(child)
-	day_clock.start()
+func start_game():
+	start_current_level()
 
-func _on_JobPanel_job_started(node : Node):
-	for child in jobs_list:
-		if child != node and child.has_method("stop_job"):
-			child.stop_job()
+func advance_level():
+	current_level += 1
+	start_current_level()
 
-func _on_JobPanel_job_completed(node : Node):
-	jobs_list.erase(node)
-	clean_progress.value += 1
+func start_current_level():
+	var level_ui = level_container.get_child(current_level)
+	level_ui.show()
+	level_ui.start_level()
+	if level_ui.has_signal("day_ended"):
+		level_ui.connect("day_ended", self, "_on_Level_day_ended", [level_ui])
+	if level_ui.has_signal("happiness_affected"):
+		level_ui.connect("happiness_affected", self, "_on_Level_happiness_affected")
+	if level_ui.has_signal("apperance_affected"):
+		level_ui.connect("apperance_affected", self, "_on_Level_apperance_affected")
 
-func _on_DayClock_timeout():
-	$CenterContainer/HusbandHomePanel.show()
+func _on_Level_day_ended(level_ui : Node):
+	level_ui.hide()
+	shadow_panel.show()
+	modal_panel.show()
 
+func _on_Level_happiness_affected(amount : float):
+	happiness += amount
+	$Control/Panel/MarginContainer/VBoxContainer/HappinessLabel.text = "Happiness : %.0f" % happiness
+
+func _on_Level_apperance_affected(amount : float):
+	appearance += amount
 
 func _on_Button_pressed():
-	$CenterContainer/HusbandHomePanel.hide()
+	modal_panel.hide()
+	shadow_panel.hide()
+	advance_level()
+
+func _ready():
+	$Control/Panel/MarginContainer/VBoxContainer/LoveLabel.text = "Love : %.0f" % love
+	$Control/Panel/MarginContainer/VBoxContainer/HappinessLabel.text = "Happiness : %.0f" % happiness
+
+

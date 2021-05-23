@@ -1,18 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Main/MainTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Clock/Clock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/JobPanel/JobPanel.gd" type="Script" id=3]
-[ext_resource path="res://Assets/fonts/yellowtail-font/Yellowtail-mVna.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/JobPanel/JobPanelFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/Main/PanelStylebox.tres" type="StyleBox" id=5]
 [ext_resource path="res://Scenes/Main/PanelHoverStylebox.tres" type="StyleBox" id=6]
 [ext_resource path="res://Scenes/Main/PanelHighlightStylebox.tres" type="StyleBox" id=7]
 [ext_resource path="res://Scenes/JobPanel/JobComplete.tres" type="Animation" id=8]
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
-use_filter = true
-font_data = ExtResource( 4 )
 
 [node name="JobPanel" type="Control"]
 margin_right = 40.0
@@ -22,6 +17,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+happiness_affect = -1.0
 panel_normal = ExtResource( 5 )
 panel_hover = ExtResource( 6 )
 panel_active = ExtResource( 7 )
@@ -42,7 +38,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
@@ -57,6 +52,8 @@ margin_right = 120.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 120, 120 )
 mouse_filter = 2
+
+[node name="Sprite" type="Sprite" parent="Panel/MarginContainer/HBoxContainer/Icon"]
 
 [node name="Center" type="Control" parent="Panel/MarginContainer/HBoxContainer"]
 margin_left = 124.0
@@ -83,16 +80,16 @@ __meta__ = {
 }
 
 [node name="TaskClock" parent="Panel/MarginContainer/HBoxContainer/Center" instance=ExtResource( 2 )]
-margin_left = 16.9706
-margin_top = 37.4767
-margin_right = 81.9706
-margin_bottom = 102.477
+margin_left = 22.9639
+margin_top = 47.9648
+margin_right = 87.9639
+margin_bottom = 112.965
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/HBoxContainer/Center"]
 margin_right = 498.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Name of the Chore"
 __meta__ = {
 "_edit_use_anchors_": false

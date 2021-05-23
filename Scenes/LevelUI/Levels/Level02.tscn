@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/JobPanel/JobPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/LevelUI/LevelUI.tscn" type="PackedScene" id=2]
+
+[node name="Level02" instance=ExtResource( 2 )]
+day_length = 20.0
+
+[node name="DayClock" parent="VBoxContainer/Control" index="1"]
+wait_time = 15.0
+
+[node name="JobsContainer" parent="VBoxContainer/ScrollContainer" index="0"]
+margin_right = 800.0
+margin_bottom = 728.0
+
+[node name="JobPanel" parent="VBoxContainer/ScrollContainer/JobsContainer" index="0" instance=ExtResource( 1 )]
+margin_right = 800.0
+margin_bottom = 120.0
+job_name = "Make the Bed"
+task_count = 3
+task_time = 0.75
+
+[node name="JobPanel2" parent="VBoxContainer/ScrollContainer/JobsContainer" index="1" instance=ExtResource( 1 )]
+margin_top = 152.0
+margin_right = 800.0
+margin_bottom = 272.0
+job_name = "Do the Dishes"
+task_time = 0.25
+
+[node name="JobPanel3" parent="VBoxContainer/ScrollContainer/JobsContainer" index="2" instance=ExtResource( 1 )]
+margin_top = 304.0
+margin_right = 800.0
+margin_bottom = 424.0
+job_name = "Dust the House"
+
+[node name="JobPanel4" parent="VBoxContainer/ScrollContainer/JobsContainer" index="3" instance=ExtResource( 1 )]
+margin_top = 456.0
+margin_right = 800.0
+margin_bottom = 576.0
+job_name = "Pretty Yourself Up"
+task_count = 4
+task_time = 1.0
+
+[node name="JobPanel5" parent="VBoxContainer/ScrollContainer/JobsContainer" index="4" instance=ExtResource( 1 )]
+margin_top = 608.0
+margin_right = 800.0
+margin_bottom = 728.0
+job_name = "Clear Away Clutter"
+task_time = 0.4

@@ -6,10 +6,14 @@ signal job_started
 signal job_completed
 signal task_completed
 signal milestone_completed
+signal happiness_affected(amount)
+signal appearance_affected(amount)
 
 export(String) var job_name : String = "Name of the Chore" setget set_job_name
 export(int, 1, 100) var task_count : int = 10
 export(float, 0.0, 60.0) var task_time : float = 0.5
+export(float, -5.0, 5.0) var happiness_affect : float = 0.0
+export(float, -5.0, 5.0) var appearance_affect : float = 0.0
 export(StyleBox) var panel_normal : StyleBox
 export(StyleBox) var panel_hover : StyleBox
 export(StyleBox) var panel_active : StyleBox
@@ -70,6 +74,8 @@ func complete_job():
 func complete_task():
 	tasks_completed += 1
 	$Panel/MarginContainer/HBoxContainer/Center/ProgressBar.value = tasks_completed
+	emit_signal("happiness_affected", happiness_affect)
+	emit_signal("appearance_affected", appearance_affect)
 	if tasks_completed >= task_count:
 		complete_job()
 
@@ -84,7 +90,7 @@ func _on_JobPanel_mouse_exited():
 
 func _on_JobPanel_gui_input(event):
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.pressed and event.button_index == BUTTON_LEFT:
 			start_job()
 
 func _on_TaskClock_timeout():

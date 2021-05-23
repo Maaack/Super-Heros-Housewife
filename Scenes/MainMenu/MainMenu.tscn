@@ -1,44 +1,36 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Main/DescriptionFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/Main/LargeTitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Main/SmallTitleFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/Main/ThickDescriptionFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/Main/AuthorTitleFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Scenes/MainMenu/MainMenu.gd" type="Script" id=6]
 
 [node name="MainMenu" type="Control"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 992.0
-margin_bottom = 568.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 960.0
-margin_bottom = 536.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 32
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 464.0
-margin_bottom = 536.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 800.0
+margin_bottom = 1280.0
 size_flags_horizontal = 3
 custom_constants/separation = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer"]
-margin_right = 464.0
-margin_bottom = 252.0
+[node name="TitlePanel" type="Panel" parent="VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 360.0
+rect_min_size = Vector2( 0, 360 )
 size_flags_vertical = 3
 
-[node name="OptionsPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
-margin_top = 284.0
-margin_right = 464.0
-margin_bottom = 536.0
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/OptionsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TitlePanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 32
@@ -49,54 +41,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsVBox" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/OptionsPanel/MarginContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/TitlePanel/MarginContainer"]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 432.0
-margin_bottom = 220.0
-custom_constants/separation = 32
+margin_right = 768.0
+margin_bottom = 328.0
 
-[node name="StartButton" type="Button" parent="HBoxContainer/VBoxContainer/OptionsPanel/MarginContainer/OptionsVBox"]
-margin_right = 400.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
-text = "Start"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 496.0
-margin_right = 960.0
-margin_bottom = 536.0
-size_flags_horizontal = 3
-custom_constants/separation = 32
-
-[node name="TitlePanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
-margin_right = 464.0
-margin_bottom = 252.0
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/TitlePanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 32
-custom_constants/margin_top = 32
-custom_constants/margin_left = 32
-custom_constants/margin_bottom = 32
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer2/TitlePanel/MarginContainer"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 432.0
-margin_bottom = 220.0
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/TitlePanel/MarginContainer/Control"]
+[node name="Label" type="Label" parent="VBoxContainer/TitlePanel/MarginContainer/Control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -200.0
-margin_right = 113.0
-margin_bottom = 83.0
+margin_left = -281.0
+margin_right = 281.0
+margin_bottom = 154.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.513726 )
 custom_constants/shadow_offset_x = -4
@@ -106,11 +62,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/TitlePanel/MarginContainer/Control"]
-margin_left = 188.552
-margin_top = 90.4696
-margin_right = 372.552
-margin_bottom = 152.47
+[node name="Label2" type="Label" parent="VBoxContainer/TitlePanel/MarginContainer/Control"]
+margin_left = 359.699
+margin_top = 134.992
+margin_right = 654.699
+margin_bottom = 237.992
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.513726 )
 custom_constants/shadow_offset_x = -4
@@ -120,17 +76,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DescriptionPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 284.0
-margin_right = 464.0
-margin_bottom = 536.0
+[node name="Label3" type="Label" parent="VBoxContainer/TitlePanel/MarginContainer/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -49.0
+margin_right = 150.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.513726 )
+custom_constants/shadow_offset_x = -4
+custom_constants/shadow_offset_y = 2
+text = "by Marek Belski"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionPanel" type="Panel" parent="VBoxContainer"]
+margin_top = 392.0
+margin_right = 800.0
+margin_bottom = 674.0
+rect_min_size = Vector2( 0, 282 )
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/DescriptionPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/DescriptionPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_right = 1.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 32
 custom_constants/margin_left = 32
@@ -139,18 +112,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/DescriptionPanel/MarginContainer"]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 432.0
-margin_bottom = 220.0
+margin_right = 768.0
+margin_bottom = 250.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer/Control"]
+[node name="Label" type="Label" parent="VBoxContainer/DescriptionPanel/MarginContainer/Control"]
 anchor_right = 1.0
-margin_bottom = 109.0
+margin_bottom = 77.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -161,12 +134,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer/Control"]
+[node name="Label2" type="Label" parent="VBoxContainer/DescriptionPanel/MarginContainer/Control"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = -42.0
-margin_bottom = 10.0
+margin_top = -49.0
+margin_bottom = 13.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -176,11 +149,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2/DescriptionPanel/MarginContainer/Control"]
+[node name="Label3" type="Label" parent="VBoxContainer/DescriptionPanel/MarginContainer/Control"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -53.0
+margin_left = 1.33484
+margin_top = -65.6992
+margin_right = 1.33484
+margin_bottom = 11.3008
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
@@ -190,3 +166,49 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 706.0
+margin_right = 800.0
+margin_bottom = 966.0
+rect_min_size = Vector2( 0, 260 )
+
+[node name="OptionsPanel" type="Panel" parent="VBoxContainer"]
+margin_top = 998.0
+margin_right = 800.0
+margin_bottom = 1280.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/OptionsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 32
+custom_constants/margin_top = 32
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsVBox" type="VBoxContainer" parent="VBoxContainer/OptionsPanel/MarginContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 768.0
+margin_bottom = 250.0
+custom_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="VBoxContainer/OptionsPanel/MarginContainer/OptionsVBox"]
+margin_right = 736.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+text = "Start"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer/OptionsPanel/MarginContainer/OptionsVBox"]
+margin_top = 72.0
+margin_right = 736.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 40 )
+text = "Credits"
+
+[connection signal="pressed" from="VBoxContainer/OptionsPanel/MarginContainer/OptionsVBox/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsPanel/MarginContainer/OptionsVBox/CreditsButton" to="." method="_on_CreditsButton_pressed"]

@@ -73,6 +73,12 @@ func stop():
 	draw_clock_value(0.0)
 	set_process(false)
 
+func pause():
+	$Timer.paused = true
+
+func unpause():
+	$Timer.paused = false
+
 func _process(delta):
 	var current_time : float = wait_time - $Timer.time_left
 	draw_clock_value(current_time)
